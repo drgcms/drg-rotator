@@ -1,0 +1,78 @@
+# Form for dc_rotator
+table: dc_rotator
+
+index:
+  filter: id as text_field, naziv, kats, active
+  actions: standard
+  
+result_set:
+  actions: standard
+
+  columns:
+    10:  
+      name: description
+    20: 
+      name: created_at
+      format: '%d.%m.%Y'
+    30: 
+      name: created_by
+      eval: dc_name4_id,dc_user,name
+    40: 
+      name: active
+      eval: dc_icon4_boolean
+
+form:
+  title:
+    field: description
+
+  actions: standard
+  tabs:
+    0main:
+      10:
+        name: description
+        type: text_field
+        size: 50
+      20:
+        name: valid_from
+        type: datetime_picker
+      30:
+        name: valid_until
+        type: datetime_picker
+      40:
+        name: kats
+        type: select
+        multiple: true
+        eval: dc_big_table 'dc_rotator'
+        html:
+          include_blank: true        
+      50:
+        name: order
+        type: text_field
+        size: 3
+      60:
+        name: active
+        type: check_box
+    1content:
+      10:
+        name: link
+        type: text_field
+        size: 50
+      20:
+        name: target
+        type: text_with_select
+        size: 10
+      30:
+        name: picture
+        type: file_select
+        size: 50
+      50:
+        name: text_over
+        type: check_box
+      60:
+        name: css_over
+        type: text_area
+        size: 50x10
+      70:
+        name: text
+        type: html_field
+        options: 'height: 400' 

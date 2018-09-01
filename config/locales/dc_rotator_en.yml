@@ -1,0 +1,78 @@
+#--
+# Copyright (c) 2018+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+en:
+  helpers:
+    label:      
+
+      dc_rotator:
+        tabletitle: Table for defining rotator web element
+        0main: Main
+        1content: Content
+        choices4_target: New window:_blank
+
+        description: Description
+        link: Link
+        picture: Picture
+        text: Text
+        valid_from: Valid from date
+        valid_until: Valid to date
+        kats: Kategories
+        order: Order
+        active: Active
+        created_by: Created by
+        created_at: Created at
+        updated_at: Updated at
+        text_over: Text over
+        css_over: CSS za text
+
+# help labels ####################################################
+    help:
+
+      dc_rotator:
+        description: Short description of rotator element
+        link: Destination link when clicked on rotator element
+        picture: Picture used for rotator element
+        text: HTML text used for rotator element or text over picture
+        valid_from: Start time when rotator element appears
+        order: Order on which elements are displayed
+        valid_until: End time for displaying rotator element
+        kats: Rotator element categories. Categories choices can be set in Big table under document named dc_rotator.
+        active: Rotator element is active.
+        class: Additional CSS class for rotator div 
+        text_over: Check, if you want text to be displayed over picture
+        css_over: CSS for positioning and styling text over picture
+        css_over_error: CSS text must be present
+        picture_error: Picture data must be present
+
+ # Settings fields
+    dc_rotator:
+      create: Rotator - Create new rotator element
+      edit: Rotator - Edit rotator element
+      settings: Rotator settings
+      kats: Categories
+      kats_help: Kategories selected for this rotator
+      delay: Delay
+      delay_help: Delay between rotator elements in miliseconds
+      klass: CSS Class
+      klass_help: Class name used for rotator element
