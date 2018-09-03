@@ -10,11 +10,12 @@ Gem::Specification.new do |s|
   s.authors     = ["Damjan Rems"]
   s.email       = ["damjan.rems@gmail.com"]
   s.homepage    = "https://www.drgcms.org"
-  s.summary     = "DRG Rotator: Rotator element for DRG CMS."
-  s.description = "DRG Rotator implements rotating image, text element on DRG CMS enabled web site."
+  s.summary     = "DRG Rotator: Implements rotating web element for DRG CMS. "
+  s.description = "DRG Rotator implements rotating image or HTML text on DRG CMS enabled web site. It requirers Foundation library for implementing rotating web element."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "drg_cms"
+  s.add_dependency 'drg_cms'
+  s.add_dependency 'foundation-rails'
 end
