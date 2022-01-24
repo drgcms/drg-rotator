@@ -20,7 +20,7 @@ It is possible to implement more then one rotator element on page.
 <%= dc_render(:dc_rotator, element: 'rotator2') %>
 ```
 
-When you implement more then one rotator on page or rotators on more pages or have implemented rotators on different sites, it is possible to define categories, under which rotator will be selecting rotating data documents. Categories must be defined in CMS Advanced menu in option Big Table under key dc_rotator.
+When you implement more then one rotator on page or rotators on more pages or have implemented rotators on different sites, it is possible to define categories, under which rotator will be selecting rotating data documents. Categories must be defined in CMS Advanced menu in option Big Table under key rotator.
 
 ## Contributing
 Fork this repository on GitHub and issue a pull request

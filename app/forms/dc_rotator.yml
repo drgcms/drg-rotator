@@ -42,7 +42,7 @@ form:
         name: kats
         type: select
         multiple: true
-        eval: dc_big_table 'dc_rotator'
+        eval: dc_big_table 'rotator'
         html:
           include_blank: true        
       50:

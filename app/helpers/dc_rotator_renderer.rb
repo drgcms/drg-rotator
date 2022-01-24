@@ -40,7 +40,7 @@ end
 ########################################################################
 # Fetch documents displayed by rorator
 ########################################################################
-def rotator_documents()
+def rotator_documents
   kats  = @opts.dig(:settings, @opts[:element], 'kats')
   query = if kats
     DcRotator.where(:kats.in => kats, active: true)
@@ -58,9 +58,9 @@ end
 ########################################################################
 def one_element(doc)
   html = if doc.picture.empty?
-%Q[<div class="orbit-text">#{doc.text.html_safe}</div>]
+%(<div class="orbit-text">#{doc.text.html_safe}</div>)
     else  
-%Q[<div class="orbit-pic-with-text" style="position: relative;"><img class="orbit-image" src="#{doc.picture}" alt="#{doc.description}">] +
+%(<div class="orbit-pic-with-text" style="position: relative;"><img class="orbit-image" src="#{doc.picture}" alt="#{doc.description}">) +
    (doc.text_over ? "<div style=\"#{doc.css_over}\">#{doc.text}</div>" : '') + '</div>'
   end.html_safe
   html = @parent.link_to(html, doc.link, target: doc.target) unless doc.link.empty?
@@ -72,20 +72,18 @@ end
 ########################################################################
 def rotator_4display
   delay = @opts.dig(:settings, @opts[:element], 'delay') || 2000
-  html = %Q[
+  html = %(
 <div class="orbit" role="region" aria-label="" data-orbit data-timer-delay="#{delay}">
   <div class="orbit-wrapper">
-    <ul class="orbit-container">
-]
+    <ul class="orbit-container">)
+
   nav = '<nav class="orbit-bullets">' 
-# each document
   n, is_active = 0, 'is-active'
   rotator_documents.each do |doc|
-    html << %Q[<li class="#{is_active} orbit-slide"> <figure class="orbit-figure">]
-    html << one_element(doc)
-    html << '</figure> </li>'
-    nav  << %Q[<button class="#{is_active}" data-slide="#{n}"><span class="show-for-sr">Slide #{n+1} details.</span></button>]
-#    
+    html << %(<li class="#{is_active} orbit-slide"> <figure class="orbit-figure">)
+    html << "#{one_element(doc)}</figure> </li>"
+    nav  << %(<button class="#{is_active}" data-slide="#{n}"><span class="show-for-sr">Slide #{n+1} details.</span></button>)
+
     is_active = ''
     n+=1
   end
@@ -98,30 +96,29 @@ end
 def link_for_rotator_settings
   table = @opts[:table] || @parent.page.class.to_s
   id = (table == 'dc_site') ? @parent.site.id : @parent.page.id
-%Q[  
+%(  
   #{@parent.dc_link_for_edit(table: 'dc_memory', title: 'helpers.dc_rotator.settings', 
                              form_name: 'dc_rotator_settings', icon: 'cog lg',
                              id: id, location: table, action: 'new',
                              element: @opts[:element] )}
   #{@parent.dc_link_for_create(table: 'dc_rotator', title: 'helpers.dc_rotator.create')}
-]
+)
 end
 
 ########################################################################
 # Render rotator for edit.
 ########################################################################
 def rotator_4edit
-  html = %Q[<div class="orbit">#{link_for_rotator_settings}]
-# each document
+  html = %(<div class="orbit">#{link_for_rotator_settings})
   rotator_documents.each do |doc|
-    html << %Q[<div class="orbit-slide">#{@parent.dc_link_for_edit(table: 'dc_rotator', id: doc.id, title: 'helpers.dc_rotator.edit')}</div>]
-    html << one_element(doc)
+    html << "<div>#{@parent.dc_link_for_edit(table: 'dc_rotator', id: doc.id, title: 'helpers.dc_rotator.edit')}"
+    html << "#{one_element(doc)}</div>"
   end
   "#{html}</div>"
 end
 
 ########################################################################
-# Default rorator renderer method.
+# Default rotator renderer method.
 ########################################################################
 def default
   clas = @opts.dig(:settings, @opts[:element], 'class')
